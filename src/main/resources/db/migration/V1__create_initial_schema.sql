@@ -52,7 +52,7 @@ CONSTRAINT fk_wallet
 	FOREIGN KEY(wallet_id)
 	REFERENCES wallet(id)
 	ON DELETE CASCADE
-)
+);
 
 -- Create special_categories table
 CREATE TABLE special_categories (
