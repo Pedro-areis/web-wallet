@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.locks.LockSupport;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
 
