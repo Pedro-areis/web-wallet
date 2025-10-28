@@ -1,5 +1,6 @@
 package com.api.wallet.transactions;
 
+import com.api.wallet.transactions.dto.TransactionsTypeResponse;
 import com.api.wallet.transactions.dto.TransactionsRequest;
 import com.api.wallet.transactions.dto.TransactionsResponse;
 import jakarta.validation.Valid;
@@ -16,7 +17,7 @@ import java.util.List;
 public class TransactionsController {
     private final TransactionsService transactionsService;
 
-    @PostMapping("/{walletId}")
+    @PostMapping("/new/{walletId}")
     public ResponseEntity<TransactionsResponse> transferFunds(
             @Valid @RequestBody TransactionsRequest request,
             @PathVariable Integer walletId
@@ -25,9 +26,27 @@ public class TransactionsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionResponse);
     }
 
-    @GetMapping
-    public ResponseEntity<List<TransactionsResponse>> getTransactionDetails() {
-        List<TransactionsResponse> transactionResponse = transactionsService.getAllTransactions();
+    @GetMapping("/{walletId}")
+    public ResponseEntity<List<TransactionsResponse>> getTransactionDetails(
+            @PathVariable Integer walletId
+    ) {
+        List<TransactionsResponse> transactionResponse = transactionsService.getAllTransactions(walletId);
         return ResponseEntity.ok(transactionResponse);
+    }
+
+    @GetMapping("/receita/{walletId}")
+    public ResponseEntity<TransactionsTypeResponse> getTotalReceitaByWallet(
+            @PathVariable Integer walletId
+    ) {
+        TransactionsTypeResponse responseReceita = transactionsService.walletReceitas(walletId);
+        return ResponseEntity.ok(responseReceita);
+    }
+
+    @GetMapping("/despesa/{walletId}")
+    public ResponseEntity<TransactionsTypeResponse> getTotalDespesaByWallet(
+            @PathVariable Integer walletId
+    ) {
+        TransactionsTypeResponse responseDespesa = transactionsService.walletDespesas(walletId);
+        return ResponseEntity.ok(responseDespesa);
     }
 }

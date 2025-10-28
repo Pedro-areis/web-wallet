@@ -3,6 +3,7 @@ package com.api.wallet.transactions;
 import com.api.wallet.enums.TransactionType;
 import com.api.wallet.transactions.dto.TransactionsRequest;
 import com.api.wallet.transactions.dto.TransactionsResponse;
+import com.api.wallet.transactions.dto.TransactionsTypeResponse;
 import com.api.wallet.wallet.Wallet;
 import com.api.wallet.wallet.WalletRepository;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.api.wallet.enums.TransactionType.receita;
 
 @Service
 @RequiredArgsConstructor
@@ -50,13 +53,12 @@ public class TransactionsService {
                 savedTransaction.getTransactionType(),
                 savedTransaction.getDateTransaction(),
                 savedTransaction.getAmount(),
-                ownerWallet.getWalletValue(),
                 savedTransaction.getWallet().getId()
         );
     }
 
-    public List<TransactionsResponse> getAllTransactions() {
-        List<Transactions> transactions = transactionsRepository.findAll();
+    public List<TransactionsResponse> getAllTransactions(Integer walletId) {
+        List<Transactions> transactions = transactionsRepository.findByWalletId(walletId);
 
         return transactions.stream()
                 .map(this::toTransactionsResponse)
@@ -71,8 +73,35 @@ public class TransactionsService {
                 transaction.getTransactionType(),
                 transaction.getDateTransaction(),
                 transaction.getAmount(),
-                transaction.getWallet().getWalletValue(),
                 transaction.getWallet().getId()
+        );
+    }
+
+    public TransactionsTypeResponse walletReceitas (Integer walletId) {
+        List<Transactions> transactionsWallet = transactionsRepository.findByWalletId(walletId);
+
+        BigDecimal totalReceita = transactionsWallet.stream()
+                .filter(t -> t.getTransactionType() == TransactionType.receita)
+                .map(Transactions::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return new TransactionsTypeResponse(
+                receita,
+                totalReceita,
+                walletId
+        );
+    }
+
+    public TransactionsTypeResponse walletDespesas (Integer walletId) {
+        List<Transactions> transactionsWallet = transactionsRepository.findByWalletId(walletId);
+
+        BigDecimal totalDespesa = transactionsWallet.stream()
+                .filter(t -> t.getTransactionType() == TransactionType.despesa)
+                .map(Transactions::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return new TransactionsTypeResponse(
+                TransactionType.despesa,
+                totalDespesa,
+                walletId
         );
     }
 }

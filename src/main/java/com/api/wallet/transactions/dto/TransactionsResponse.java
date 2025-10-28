@@ -12,6 +12,5 @@ public record TransactionsResponse(
         TransactionType trasactionType,
         LocalDateTime dateTransaction,
         BigDecimal amount,
-        BigDecimal walletValue,
         Integer walletId
 ) {}
