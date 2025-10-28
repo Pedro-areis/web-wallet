@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 public class WalletController {
     private final WalletService walletService;
 
-    @PostMapping("/{userId}")
+    @PostMapping("/new/{userId}")
     public ResponseEntity<WalletResponse> createWallet(
             @Valid @RequestBody WalletRequest request,
             @PathVariable Integer userId
@@ -26,10 +27,12 @@ public class WalletController {
         return ResponseEntity.status(HttpStatus.CREATED).body(walletResponse);
     }
 
-    @GetMapping
-    public ResponseEntity<List<WalletResponse>> getWallets() {
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<WalletResponse>> getWallets(
+            @PathVariable Integer userId
+    ) {
 
-        List<WalletResponse> wallets = walletService.getAllWallets();
+        List<WalletResponse> wallets = walletService.getAllWallets(userId);
 
         return ResponseEntity.ok(wallets);
     }

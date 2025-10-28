@@ -40,8 +40,8 @@ public class WalletService {
         );
     }
 
-    public List<WalletResponse> getAllWallets() {
-        List<Wallet> wallets = walletRespository.findAll();
+    public List<WalletResponse> getAllWallets(Integer userId) {
+        List<Wallet> wallets = walletRespository.findByUserId(userId);
 
         return wallets.stream()
                 .map(this::toWalletResponse)
