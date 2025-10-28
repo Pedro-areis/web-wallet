@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class WalletService {
-    private final WalletRespository walletRespository;
+    private final WalletRepository walletRespository;
     private final UserRepository userRepository;
 
     public WalletResponse createWallet(Integer userId, WalletRequest request) {
@@ -48,7 +48,7 @@ public class WalletService {
                 .collect(Collectors.toList());
     }
 
-    public WalletResponse toWalletResponse(Wallet wallet) {
+    private WalletResponse toWalletResponse(Wallet wallet) {
         return new WalletResponse(
                 wallet.getId(),
                 wallet.getName(),

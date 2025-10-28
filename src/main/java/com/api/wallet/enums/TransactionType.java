@@ -1,7 +1,7 @@
 package com.api.wallet.enums;
 
 
-public enum TrasactionType {
+public enum TransactionType {
     receita,
     despesa
 }

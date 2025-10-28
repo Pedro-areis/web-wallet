@@ -1,6 +1,6 @@
 package com.api.wallet.transactions.dto;
 
-import com.api.wallet.enums.TrasactionType;
+import com.api.wallet.enums.TransactionType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -20,7 +20,6 @@ public record TransactionsRequest(
         @NotBlank(message = "A categoria da transação é obrigatória")
         String category,
 
-        @NotBlank(message = "O tipo da transação é obrigatório")
-        TrasactionType trasactionType
+        TransactionType transactionType
 ) {
 }
