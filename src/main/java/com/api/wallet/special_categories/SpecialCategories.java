@@ -30,6 +30,7 @@ public class SpecialCategories {
     @Column(name = "current_value")
     private BigDecimal currentValue;
 
+    @Enumerated(EnumType.STRING)
     private SpecialCategoriesType type;
 
     @ManyToOne
