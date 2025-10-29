@@ -13,9 +13,6 @@ public record CategoriesRequest(
 
         @NotBlank(message = "A descrição da categoria é obrigatória")
         @Size(max = 255)
-        String description,
-
-        @CreationTimestamp
-        LocalDateTime createdAt
+        String description
 ) {
 }

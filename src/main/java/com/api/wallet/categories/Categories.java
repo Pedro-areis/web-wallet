@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,6 +28,7 @@ public class Categories {
     private String description;
 
     @Column(name = "created_at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @ManyToOne
