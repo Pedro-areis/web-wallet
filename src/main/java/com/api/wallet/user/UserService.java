@@ -28,6 +28,7 @@ public class UserService {
         newUser.setName(request.name());
         newUser.setEmail(request.email());
         newUser.setDateBirth(request.dateBirth());
+        newUser.setNote(request.note());
         newUser.setPassword(hashedPassword);
 
         User savedUser = userRepository.save(newUser);
@@ -37,6 +38,7 @@ public class UserService {
                 savedUser.getName(),
                 savedUser.getEmail(),
                 savedUser.getDateBirth(),
+                savedUser.getNote(),
                 savedUser.getCreatedAt()
         );
     }
@@ -55,6 +57,7 @@ public class UserService {
                 user.getName(),
                 user.getEmail(),
                 user.getDateBirth(),
+                user.getNote(),
                 user.getCreatedAt()
         );
     }

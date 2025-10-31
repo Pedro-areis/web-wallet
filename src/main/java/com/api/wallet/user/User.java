@@ -32,6 +32,9 @@ public class User {
     @Column(name = "date_birth", nullable = false)
     private LocalDate dateBirth;
 
+    @Column(columnDefinition = "TEXT")
+    private String note;
+
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

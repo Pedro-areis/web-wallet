@@ -18,6 +18,8 @@ public record UserRequest(
         @NotNull(message = "A data de nascimento é obrigatória")
         LocalDate dateBirth,
 
+        String note,
+
         @NotBlank(message = "A senha é obrigatória")
         String password
 ) {}
