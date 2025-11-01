@@ -2,8 +2,7 @@ package com.api.wallet.wallet;
 
 import com.api.wallet.user.User;
 import com.api.wallet.user.UserRepository;
-import com.api.wallet.wallet.dto.WalletRequest;
-import com.api.wallet.wallet.dto.WalletResponse;
+import com.api.wallet.wallet.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +55,44 @@ public class WalletService {
                 wallet.getCreatedAt(),
                 wallet.getUser().getId()
         );
+    }
+
+    public UpdateWalletResponse updateWallet(Integer id, Integer userId, UpdateWalletRequest request) {
+        // Lógica para atualizar uma carteira
+        User userOwner = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
+
+        Wallet updateWallet = walletRespository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carteira não encontrada!"));
+
+        if (!updateWallet.getUser().getId().equals(userOwner.getId())) {
+            throw new RuntimeException("A carteira não pertence ao usuário!");
+        }
+
+        updateWallet.setName(request.name());
+
+        Wallet savedWallet = walletRespository.save(updateWallet);
+
+        return new UpdateWalletResponse(
+                savedWallet.getId(),
+                savedWallet.getName(),
+                userOwner.getId()
+        );
+    }
+
+    public String deleteWallet(Integer id, Integer userId) {
+        User userOwner = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
+
+        Wallet validWallet = walletRespository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carteira não encontrada!"));
+
+        if (!validWallet.getUser().getId().equals(userOwner.getId())) {
+            throw new RuntimeException("A carteira não pertence ao usuário!");
+        }
+
+        walletRespository.delete(validWallet);
+
+        return "Carteira deletada com sucesso";
     }
 }
