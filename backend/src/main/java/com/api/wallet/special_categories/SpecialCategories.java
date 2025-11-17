@@ -1,0 +1,47 @@
+package com.api.wallet.special_categories;
+
+import com.api.wallet.enums.SpecialCategoriesType;
+import com.api.wallet.user.User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CurrentTimestamp;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "special_categories")
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class SpecialCategories {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+
+    private String description;
+
+    @Column(name = "limit_value")
+    private BigDecimal limitValue;
+
+    @Column(name = "current_value")
+    private BigDecimal currentValue;
+
+    @Enumerated(EnumType.STRING)
+    private SpecialCategoriesType type;
+
+    @CurrentTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false, referencedColumnName = "id")
+    private User user;
+}
