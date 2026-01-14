@@ -1,7 +1,5 @@
 import { type ReactNode } from 'react';
 
-import "./InitialPage.css"
-
 interface InitialPageProps {
     title: string,
     children: ReactNode
@@ -10,10 +8,13 @@ interface InitialPageProps {
 function InitialPage({ title, children }: InitialPageProps) {
     
     return (
-        <main>
-            <div className="input_container">
-                <h1>{title}</h1>
-                <img className="iconSite" src="src\assets\IconSite.png" alt="InconSite" />
+        <main className='flex flex-row justify-center items-center h-screen w-screen 
+        bg-[#0f0e0d]'>
+            <div className="flex w-147.5 h-200 color-[#ffe100] flex-col justify-center
+            items-center rounded-[20px] border border-[#ffe100] bg-[#000000]">
+                <h1 className='relative text-center text-[30px] font-semibold -top-8.75 
+                text-[#ffe100] w-full'>{title}</h1>
+                <img className="margin-auto mb-5 w-50 h-50" src="src\assets\IconSite.png" alt="InconSite" />
                 {children}
             </div>
         </main>
