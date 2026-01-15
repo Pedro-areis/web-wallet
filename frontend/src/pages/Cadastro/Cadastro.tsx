@@ -1,7 +1,14 @@
 import InitialPage from "../../components/InitialPage/InitialPage"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function RegisterPage() {
+    const navigate = useNavigate();
+    
+    function handleRegister() {
+        // Lógica de registro aqui
+        navigate("/home");
+    }
+
     return (
         <InitialPage title="Cadastre-se">
             <form className="flex flex-col justify-center items-center">
@@ -25,7 +32,7 @@ function RegisterPage() {
                 p-1.25 w-67.5 h-8.75 font-[18px] outline-none hover:bg-[#000000] hover:text-[#ffe100]
                 hover:border-[#ffe100]" type="password" placeholder="Senha"/>
 
-                <button className="mt-16.25 bg-[#ffe100] cursor-pointer border border-transparent
+                <button onClick={handleRegister} className="mt-16.25 bg-[#ffe100] cursor-pointer border border-transparent
                 rounded-[5px] p-1.25 w-42.5 h-8.75 hover:bg-[#000000]
                 hover:text-[#ffe100] hover:border-[#ffe100]" type="submit">Login</button>
                 
