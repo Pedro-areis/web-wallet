@@ -12,7 +12,7 @@ function RegisterPage() {
     return (
         <InitialPage title="Cadastre-se">
             <form className="flex flex-col justify-center items-center">
-                <img className="relative right-40 top-8.75 w-8.75 h-8.75" src="src\assets\User.png" alt="userImg" />
+                <img className="relative right-40 top-8.75 w-8.75 h-8.75" src="src\assets\UserYellow.png" alt="userImg" />
                 <input className="bg-[#ffe100] border border-transparent rounded-[5px] 
                 p-1.25 w-67.5 h-8.75 font-[18px] outline-none hover:bg-[#000000] hover:text-[#ffe100]
                 hover:border-[#ffe100]" type="text" placeholder="Nome Completo" />

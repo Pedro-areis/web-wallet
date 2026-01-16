@@ -8,7 +8,7 @@ function NavBar() {
     }
 
     return (
-        <nav className="flex flex-col w-92.5 h-screen bg-[#000000] rounded-[20px] 
+        <nav className="flex flex-col w-[20%] h-screen bg-[#000000] rounded-[20px] 
         p-5 border border-[#ffe100]">
             <div className="flex flex-row justify-between items-center mt-10
             w-full h-25">

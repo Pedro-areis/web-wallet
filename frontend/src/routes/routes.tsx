@@ -2,7 +2,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import LoginPage from "../pages/Login/Login";
 import RegisterPage from "../pages/Cadastro/Cadastro";
-import NavBar from "../components/NavBar/NavBar";
+import HomePage from "../pages/Home/HomePage";
 
 function AppRoutes(){
   return (
@@ -11,7 +11,7 @@ function AppRoutes(){
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<NavBar />} />
+        <Route path="/home" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
