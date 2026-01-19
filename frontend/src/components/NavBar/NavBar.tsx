@@ -7,6 +7,14 @@ function NavBar() {
         navigate("/login");
     }
 
+    function handleConfig() {
+        navigate("/user-config");
+    }
+
+    function handleHome() {
+        navigate("/home");
+    }
+
     return (
         <nav className="flex flex-col w-[20%] h-screen bg-[#000000] rounded-[20px] 
         p-5 border border-[#ffe100]">
@@ -17,7 +25,7 @@ function NavBar() {
                     <img src="src\assets\UserBlack.png" alt="perfil" />
                 </div>
                 <div className="flex flex-col items-center w-[50%] h-full justify-around">
-                    <button className="flex w-32.5 h-10 p-1.25 font-semibold text-black bg-[#ffe100]
+                    <button onClick={handleConfig} className="flex w-32.5 h-10 p-1.25 font-semibold text-black bg-[#ffe100]
                     rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Meu perfil</button>
 
                     <button onClick={handleLogout} className="flex w-32.5 h-10 p-1.25 font-semibold text-black bg-[#ffe100]
@@ -25,7 +33,7 @@ function NavBar() {
                 </div>
             </div>
             <div className="flex flex-col mt-42.5 gap-8 items-center justify-center">
-                <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
+                <button onClick={handleHome} className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
                 rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Home</button>
 
                 <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]

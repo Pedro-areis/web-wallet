@@ -3,6 +3,7 @@ import { Routes } from "react-router-dom";
 import LoginPage from "../pages/Login/Login";
 import RegisterPage from "../pages/Cadastro/Cadastro";
 import HomePage from "../pages/Home/HomePage";
+import UserConfig from "../pages/UserConfig/UserConfig";
 
 function AppRoutes(){
   return (
@@ -12,6 +13,7 @@ function AppRoutes(){
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/user-config" element={<UserConfig />} />
       </Routes>
     </BrowserRouter>
   );

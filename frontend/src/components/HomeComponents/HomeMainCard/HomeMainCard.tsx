@@ -1,4 +1,4 @@
-function MainCard() {
+function HomeMainCard() {
     return (
         <div className="flex w-full h-100 justify-center items-center rounded-[20px]">
             <section className="w-[90%] h-87.5 bg-[#ffe100] flex flex-row rounded-[20px]
@@ -45,4 +45,4 @@ function MainCard() {
     );
 }
 
-export default MainCard;
+export default HomeMainCard;
