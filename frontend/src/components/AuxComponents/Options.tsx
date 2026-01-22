@@ -9,8 +9,7 @@ function Options({ selectedOption, options }: OptionsProps) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(selectedOption);
 
-  const optionsReceived = [];
-
+  const optionsReceived: string[][] = [];
   optionsReceived.push(options);
 
   const handleOpen = () => {
@@ -23,17 +22,26 @@ function Options({ selectedOption, options }: OptionsProps) {
   }
 
   return (
-    <div onClick={() => handleOpen()}>
+    <div className="flex flex-col w-full h-full" onClick={() => handleOpen()}>
         <div className="flex flex-row w-full h-full items-center gap-2">
             <img className="cursor-pointer" src="src\assets\Chevrons down.png" alt="Abrir" />
             <span className="text-white font-semibold text-[18px] cursor-pointer">{selected}</span>
         </div>
 
       {open && (
-        <ul className="flex flex-col">
-          {optionsReceived[0].map((opt) => (
-            <li onClick={() => selectionOption(opt)}>{opt}</li>
-          ))}
+        <ul className="flex flex-col bg-[#0F0E0D] rounded-[7px] text-white 
+        p-2 gap-2 z-50">
+          {optionsReceived[0]
+            .filter((opt) => opt !== selected)
+            .map((opt, idx) => (
+              <li
+                key={idx}
+                className="cursor-pointer hover:bg-[#dfc543] rounded-[5px]"
+                onClick={() => selectionOption(opt)}
+              >
+                {opt}
+              </li>
+            ))}
         </ul>
       )}
     </div>

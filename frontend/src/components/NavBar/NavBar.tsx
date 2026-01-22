@@ -37,13 +37,13 @@ function NavBar() {
                 rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Home</button>
 
                 <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
-                rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Carteira</button>
-                
-                <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
                 rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Transações</button>
                 
                 <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
-                rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Configurações</button>
+                rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Relatórios</button>
+                
+                <button className="flex w-67.5 h-14 p-1.25 font-semibold text-black bg-[#ffe100]
+                rounded-[5px] items-center justify-center cursor-pointer hover:bg-[#dfc543]">Orçamentos</button>
             </div>
         </nav>
     )

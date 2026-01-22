@@ -1,17 +1,14 @@
-import Options from "../../components/AuxComponents/Options";
 import ConfigMainCard from "../../components/ConfigComponents/ConfigMainCard/ConfigMainCard";
-import ConfigBottomCard from "../../components/ConfigComponents/ConfigRightCards/ConfigBottomCard";
-import ConfigTopCard from "../../components/ConfigComponents/ConfigRightCards/ConfigTopCard";
 import NavBar from "../../components/NavBar/NavBar";
+import ConfigTopCard from "../../components/ConfigComponents/ConfigRightCards/ConfigTopCard";
+import ConfigBottomCard from "../../components/ConfigComponents/ConfigRightCards/ConfigBottomCard";
 
 function UserConfig() {
-    const options = ["Carteira Principal", "Carteira Viagem", "Carteira Casa"];
-
   return (
     <main className="flex flex-row w-screen h-screen bg-[#0F0E0D]">
       <NavBar />
       <div className="flex flex-row w-[80%] h-full items-center justify-around">
-        <section className="flex w-[50%] h-full">
+        <section className="flex w-[45%] h-full">
           <ConfigMainCard title="Configurações do Perfil">
             <div className="flex flex-row w-full h-full p-4">
               <div className="flex flex-col w-[60%] h-full gap-2">
@@ -100,18 +97,8 @@ Aqui você pode fazer anotações para lembrete, muito útil para não esquecer 
             </div>
           </ConfigMainCard>
         </section>
-        <section className="flex flex-col w-[45%] h-full items-center justify-between">
-          <ConfigTopCard title="Carteiras">
-            <div className="flex flex-row w-full h-full p-4">
-              <div className="flex flex-col w-[60%]">
-                <div className="flex flex-col w-75 h-11.25 p-4 bg-[#0F0E0D] 
-                rounded-[7px] items-center gap-2">
-                  <Options selectedOption="Selecione sua carteira" options={options}/>
-                </div>
-              </div>
-              <div></div>
-            </div>
-          </ConfigTopCard>
+        <section className="flex flex-col w-[50%] h-full items-center justify-between">
+          <ConfigTopCard />
           <ConfigBottomCard />
         </section>
       </div>
