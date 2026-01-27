@@ -5,3 +5,16 @@ Esse projeto tem o foco no meu aprendizado de novas tecnologias, entre elas: Jav
 ## Esboço criado no Figma para melhor visualização do projeto:
 
 <img width="939" height="856" alt="image" src="https://github.com/user-attachments/assets/a507cbca-aa19-483b-9248-f6c94a08b3f9" />
+
+## Configuração application.properties:
+
+spring.datasource.url=jdbc:postgresql://localhost:XXXX/seu_banco_de_dados <br>
+spring.datasource.username=postgres<br>
+spring.datasource.password=sua_senha<br>
+
+spring.datasource.driver-class-name=org.postgresql.Driver<br>
+
+spring.jpa.hibernate.ddl-auto=update<br>
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect<br>
+
+api.security.token.secret=chave_secreta_jwt
