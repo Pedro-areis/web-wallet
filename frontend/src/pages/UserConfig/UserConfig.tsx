@@ -97,7 +97,7 @@ Aqui você pode fazer anotações para lembrete, muito útil para não esquecer 
             </div>
           </ConfigMainCard>
         </section>
-        <section className="flex flex-col w-[50%] h-full items-center justify-between">
+        <section className="flex flex-col w-[50%] h-full items-center justify-center gap-4">
           <ConfigTopCard />
           <ConfigBottomCard />
         </section>
