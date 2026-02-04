@@ -6,7 +6,8 @@ import { registerUser } from "../../services/UserService/RegisterService";
 function RegisterPage() {
     const navigate = useNavigate();
     
-    function handleRegister() {
+    const handleRegister = async (e: React.FormEvent) => {
+        e.preventDefault();
         const name = document.getElementById("name") as HTMLInputElement
         const email = document.getElementById("email") as HTMLInputElement
         const dateBirth = new Date((document.querySelector('input[type="date"]') as HTMLInputElement).value)
@@ -19,8 +20,7 @@ function RegisterPage() {
             password: password.value
         }
         try {
-            registerUser(userData);
-            console.log("Usuário registrado com sucesso" + userData);
+            await registerUser(userData);
             navigate("/home");
             alert("Usuário registrado com sucesso!");
         } catch (error) {
