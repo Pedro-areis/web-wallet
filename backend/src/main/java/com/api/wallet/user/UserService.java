@@ -70,8 +70,8 @@ public class UserService {
 
         return new UpdateUserResponse(
                 updatedUser.getId(),
-                updatedUser.getNote(),
-                updatedUser.getEmail()
+                updatedUser.getEmail(),
+                updatedUser.getNote()
         );
     }
 

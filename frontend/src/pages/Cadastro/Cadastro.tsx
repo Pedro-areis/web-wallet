@@ -8,6 +8,7 @@ function RegisterPage() {
     
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
+
         const name = document.getElementById("name") as HTMLInputElement
         const email = document.getElementById("email") as HTMLInputElement
         const dateBirth = new Date((document.querySelector('input[type="date"]') as HTMLInputElement).value)
@@ -23,9 +24,16 @@ function RegisterPage() {
             await registerUser(userData);
             navigate("/home");
             
-        } catch (error) {
+        } catch (error: any) {
             console.error("Erro ao registrar usuário:", error);
-            alert("Erro ao registrar usuário. Por favor, tente novamente.");
+
+            if (error.response?.status === 403) {
+                alert("E-mail já cadastrado. Por favor, utilize outro e-mail.");
+                return;
+            } else {
+                alert("Erro ao registrar usuário. Por favor, tente novamente.");
+                return;
+            }
         }        
     }
 
