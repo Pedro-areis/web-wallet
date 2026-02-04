@@ -22,7 +22,7 @@ function RegisterPage() {
         try {
             await registerUser(userData);
             navigate("/home");
-            alert("Usuário registrado com sucesso!");
+            
         } catch (error) {
             console.error("Erro ao registrar usuário:", error);
             alert("Erro ao registrar usuário. Por favor, tente novamente.");

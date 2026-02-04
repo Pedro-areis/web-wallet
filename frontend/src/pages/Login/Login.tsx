@@ -30,9 +30,6 @@ function LoginPage() {
     e.preventDefault();
     try {
       await loginUser(credentials.email, credentials.password);
-      const token = localStorage.getItem("token");
-      console.log(token);
-      alert("Login realizado com sucesso!");
       navigate("/home");
 
     } catch (error) {
