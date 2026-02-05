@@ -21,18 +21,34 @@ public class SecurityFilter extends OncePerRequestFilter {
     private final TokenService tokenService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        var token = this.recoverToken(request);
-        if(token != null) {
-            var subject = tokenService.validateToken(token);
-            UserDetails user = userRepository.findByEmail(subject).orElse(null);
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
+            throws ServletException, IOException {
 
-            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = recoverToken(request);
+
+        if (token != null) {
+            String subject = tokenService.validateToken(token);
+
+            if (subject != null && !subject.isBlank()) {
+                userRepository.findByEmail(subject).ifPresent(user -> {
+
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(
+                                    user,
+                                    null,
+                                    user.getAuthorities()
+                            );
+
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                });
+            }
         }
 
         filterChain.doFilter(request, response);
     }
+
 
     private String recoverToken(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
