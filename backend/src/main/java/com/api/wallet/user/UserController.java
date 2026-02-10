@@ -1,13 +1,12 @@
 package com.api.wallet.user;
 
-import com.api.wallet.user.dto.UpdateUserRequest;
-import com.api.wallet.user.dto.UpdateUserResponse;
-import com.api.wallet.user.dto.UserRequest;
-import com.api.wallet.user.dto.UserResponse;
+import com.api.wallet.user.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +18,11 @@ import java.util.concurrent.locks.LockSupport;
 public class UserController {
 
     private final UserService userService;
+
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> getCurrentUser(@AuthenticationPrincipal User user){
+        return ResponseEntity.ok(userService.getCurrentUser(user.getId()));
+    }
 
     @PostMapping("/register")
     public ResponseEntity<UserResponse> createUser(

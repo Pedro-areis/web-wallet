@@ -1,14 +1,13 @@
 package com.api.wallet.user;
 
-import com.api.wallet.user.dto.UpdateUserRequest;
-import com.api.wallet.user.dto.UpdateUserResponse;
-import com.api.wallet.user.dto.UserRequest;
-import com.api.wallet.user.dto.UserResponse;
+import com.api.wallet.user.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +15,20 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    public UserResponse getCurrentUser(Integer id) {
+        User currentUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+
+        return new UserResponse(
+                currentUser.getId(),
+                currentUser.getName(),
+                currentUser.getEmail(),
+                currentUser.getDateBirth(),
+                currentUser.getNote(),
+                currentUser.getCreatedAt()
+        );
+    }
 
     public UserResponse createUser(UserRequest request) {
         // Lógica para criar um usuário
