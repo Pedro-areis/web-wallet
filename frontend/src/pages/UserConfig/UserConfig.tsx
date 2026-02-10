@@ -2,8 +2,21 @@ import ConfigMainCard from "../../components/ConfigComponents/ConfigMainCard/Con
 import NavBar from "../../components/NavBar/NavBar";
 import ConfigTopCard from "../../components/ConfigComponents/ConfigRightCards/ConfigTopCard";
 import ConfigBottomCard from "../../components/ConfigComponents/ConfigRightCards/ConfigBottomCard";
+import { useEffect, useState } from "react";
+import currentUser from "../../services/UserService/CurrentUser";
+import type { UserType } from "../../types/User/UserType";
 
 function UserConfig() {
+  const [data, setData] = useState<UserType>();
+
+  useEffect(() => {
+    currentUser().then((user) => {
+      setData(user);
+    });
+  }, []);
+
+  
+
   return (
     <main className="flex flex-row w-screen h-screen bg-[#0F0E0D]">
       <NavBar />
@@ -13,7 +26,7 @@ function UserConfig() {
             <div className="flex flex-row w-full h-full p-4">
               <div className="flex flex-col w-[60%] h-full gap-2">
                 <p className="text-2xl font-semibold mb-4">
-                  Bem vindo Usuário!
+                  Bem vindo, {data?.name}
                 </p>
                 <form className="flex flex-col">
                   <label htmlFor="email">
@@ -24,7 +37,7 @@ function UserConfig() {
                                     outline-none p-2 text-white items-center"
                     type="email"
                     id="email"
-                    placeholder="emaildousuario@gmail.com"
+                    placeholder={data?.email}
                   />
 
                   <label htmlFor="password">
@@ -44,9 +57,7 @@ function UserConfig() {
                     rows={5}
                     cols={30}
                     maxLength={700}
-                    placeholder="Bloco de notas para sua carteira... 
-
-Aqui você pode fazer anotações para lembrete, muito útil para não esquecer de fazer aquela transação do dia a dia."
+                    placeholder={data?.note ?? "Bloco de notas para sua carteira... \n\nAqui você pode fazer anotações para lembrete, muito útil para não esquecer de fazer aquela transação do dia a dia."}
                   ></textarea>
                 </form>
               </div>
