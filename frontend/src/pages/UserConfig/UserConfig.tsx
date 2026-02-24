@@ -5,17 +5,19 @@ import ConfigBottomCard from "../../components/ConfigComponents/ConfigRightCards
 import { useEffect, useState } from "react";
 import currentUser from "../../services/UserService/CurrentUser";
 import type { UserType } from "../../types/User/UserType";
+import { formatDate } from "../../utils/FormatDate";
 
 function UserConfig() {
   const [data, setData] = useState<UserType>();
 
-  useEffect(() => {
-    currentUser().then((user) => {
-      setData(user);
-    });
-  }, []);
+  const getUser = async () => {
+    const user = await currentUser();
+    setData(user);
+  }
 
-  
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <main className="flex flex-row w-screen h-screen bg-[#0F0E0D]">
@@ -26,7 +28,7 @@ function UserConfig() {
             <div className="flex flex-row w-full h-full p-4">
               <div className="flex flex-col w-[60%] h-full gap-2">
                 <p className="text-2xl font-semibold mb-4">
-                  Bem vindo, {data?.name}
+                  Bem vindo, {data?.name}!
                 </p>
                 <form className="flex flex-col">
                   <label htmlFor="email">
@@ -83,7 +85,7 @@ function UserConfig() {
                     className="flex w-full h-9.25 bg-[#0F0E0D] rounded-[10px]
                                     items-center justify-start text-[#FFFFFF] p-4"
                   >
-                    <p className="font-light">05/08/2020</p>
+                    <p className="font-light">{formatDate(data?.createdAt)}</p>
                   </div>
 
                   <label className="flex font-semibold text-[#0F0E0D]">
@@ -94,7 +96,7 @@ function UserConfig() {
                     className="flex w-full h-9.25 bg-[#0F0E0D] rounded-[10px]
                                     items-center justify-start text-[#FFFFFF] p-4"
                   >
-                    <p className="font-light">12/08/2004</p>
+                    <p className="font-light">{formatDate(data?.dateBirth)}</p>
                   </div>
                 </div>
 
