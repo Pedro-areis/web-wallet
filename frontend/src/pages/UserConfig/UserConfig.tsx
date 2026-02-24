@@ -12,6 +12,7 @@ function UserConfig() {
 
   const getUser = async () => {
     const user = await currentUser();
+    localStorage.setItem("userId", user.id.toString());
     setData(user);
   }
 
