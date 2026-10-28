@@ -47,7 +47,7 @@ Legenda de status: ✅ implementado · ⚠️ parcial · ❌ ausente. A situaç�
 | Categorias por usuário, usadas nas movimentações | ⚠️ existem, mas não se ligam às transações |
 | Filtros por período, categoria e tipo | ❌ |
 | Metas financeiras com valor-alvo e progresso | ⚠️ sem atualização do progresso |
-| Limites de gasto e orçamentos por categoria | ⚠️ modelo duplicado (`special_categories.limit` × `budgets`), decisão pendente |
+| Limites de gasto e orçamentos por categoria | ⚠️ modelo duplicado (`special_categories.limit` × `budgets`), [ADR 0003](adr/0003-metas-e-limites.md) |
 | Investimentos: registro de aplicações e do valor atual (sem operações reais) | ❌ |
 
 ### Análise e relatórios
@@ -80,7 +80,7 @@ Estas definições valem para toda a aplicação. Uma definição só muda com d
 | Receitas do período | Soma das transações do tipo receita com data dentro do período | Proposta |
 | Despesas do período | Soma das transações do tipo despesa com data dentro do período | Proposta |
 | Fluxo de caixa do período | Receitas do período − despesas do período | Proposta |
-| Saldo da carteira em uma data | Saldo inicial + Σ receitas − Σ despesas até a data | Proposta; depende da decisão "saldo calculado ou guardado" |
+| Saldo da carteira em uma data | Saldo inicial + Σ receitas − Σ despesas até a data | Aceita ([ADR 0002](adr/0002-saldo-calculado.md)): saldo calculado |
 | Saldo total | Soma dos saldos das carteiras. **Não inclui** valores investidos | Proposta |
 | Valor investido | Soma dos aportes − resgates registrados em investimentos | Proposta |
 | Taxa de poupança | Fluxo de caixa ÷ receitas do período, exibida só quando as receitas forem maiores que zero | Proposta |

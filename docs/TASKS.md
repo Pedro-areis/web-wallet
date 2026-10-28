@@ -12,16 +12,16 @@ Status: ⬜ não iniciada · 🔄 em andamento · ✅ concluída
 - [x] `.claude/CLAUDE.md` com as regras para agentes de IA
 - [x] Organização do repositório: `.gitignore`, remoção dos arquivos da extensão de modernização, PROJECT.md e TASKS.md
 
-## Decisões pendentes
+## Decisões tomadas (28/10/2026)
 
-- [ ] Java 21 ou 25 (sugestão: 21). Necessária na Fase 0.
-- [ ] O que fazer com os 5 commits da `feature/integracao-api-tela-config-user` que não estão na `main` (endpoint `/me`, formatação de datas, service de carteira): abrir PR ou descartar. Necessária antes da Fase 4.
-- [ ] Saldo calculado ou guardado (sugestão: calculado). Necessária na Fase 3.
-- [ ] Metas e limites: unificar `special_categories.limit` com `budgets` e separar metas numa entidade própria? Necessária na Fase 7.
+- [x] Java 21 ([ADR 0001](adr/0001-java-21.md)).
+- [x] Os 5 commits de `feature/integracao-api-tela-config-user` que não estão na `main` serão descartados. A branch ainda não foi removida.
+- [x] Saldo calculado ([ADR 0002](adr/0002-saldo-calculado.md)).
+- [x] Limites unificados em `budgets` e metas em entidade própria ([ADR 0003](adr/0003-metas-e-limites.md)).
 
 ## ⬜ Fase 0: build e ambiente
 
-- [ ] `pom.xml`: `modelVersion 4.0.0` e versão do springdoc
+- [ ] `pom.xml`: `modelVersion 4.0.0`, Java 21 e versão do springdoc
 - [ ] Wrapper com Maven 3.9.x estável
 - [ ] Flyway com versão gerenciada pelo Boot + `flyway-database-postgresql`
 - [ ] `docker-compose` com PostgreSQL para desenvolvimento
