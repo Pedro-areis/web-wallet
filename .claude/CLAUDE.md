@@ -7,6 +7,7 @@ Responda ao usuário em **português (PT-BR)**.
 Leia antes de trabalhar:
 - [docs/PROJECT.md](../docs/PROJECT.md): o problema, os requisitos e a definição dos indicadores financeiros.
 - [docs/TASKS.md](../docs/TASKS.md): fases, tarefas, decisões pendentes e o que já foi feito. Atualize ao concluir cada tarefa.
+  - Se a pasta `pages_html/` existir (é local e ignorada pelo git), rode `node pages_html/build-backlog.mjs` depois de alterar o TASKS.md. O comando regenera a página visual do backlog. A página é derivada: nunca edite o HTML à mão.
 
 ## Regras de trabalho (definidas pelo dono do projeto)
 
