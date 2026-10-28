@@ -1,1 +1,12 @@
+# IDEs e editores
 .idea/
+.vscode/
+
+# Agentes de IA (o .claude/CLAUDE.md é versionado; só as configurações locais ficam de fora)
+.claude/settings.local.json
+.github/modernize/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
