@@ -13,3 +13,6 @@ desktop.ini
 
 # Arquivos HTML para acompanhar o desenvolvimento
 pages_html/
+# Segredos locais
+.env
+!.env.example
