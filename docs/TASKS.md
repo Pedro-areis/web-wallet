@@ -19,15 +19,15 @@ Status: ⬜ não iniciada · 🔄 em andamento · ✅ concluída
 - [x] Saldo calculado ([ADR 0002](adr/0002-saldo-calculado.md)).
 - [x] Limites unificados em `budgets` e metas em entidade própria ([ADR 0003](adr/0003-metas-e-limites.md)).
 
-## ⬜ Fase 0: build e ambiente
+## 🔄 Fase 0: build e ambiente
 
-- [ ] `pom.xml`: `modelVersion 4.0.0`, Java 21 e versão do springdoc
-- [ ] Wrapper com Maven 3.9.x estável
-- [ ] Flyway com versão gerenciada pelo Boot + `flyway-database-postgresql`
-- [ ] `docker-compose` com PostgreSQL para desenvolvimento
-- [ ] Configuração por variáveis de ambiente + `application-example`
-- [ ] Frontend: `VITE_API_URL` + `.env.example`
-- [ ] READMEs (raiz, backend, frontend) com o passo a passo para rodar localmente
+- [x] `pom.xml`: `modelVersion 4.0.0`, Java 21 e versão do springdoc
+- [x] Wrapper com Maven 3.9.x estável
+- [x] Flyway com versão gerenciada pelo Boot + `flyway-database-postgresql`
+- [x] `docker-compose` com PostgreSQL para desenvolvimento
+- [x] Configuração por variáveis de ambiente + `application-example`
+- [x] Frontend: `VITE_API_URL` + `.env.example`
+- [x] READMEs (raiz, backend, frontend) com o passo a passo para rodar localmente
 
 **Aceite:** `./mvnw verify` e `npm ci && npm run build` passam numa máquina limpa com Docker; `docker compose up` sobe o banco; nenhum segredo fica no código.
 

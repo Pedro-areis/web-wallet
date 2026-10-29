@@ -6,15 +6,24 @@ Esse projeto tem o foco no meu aprendizado de novas tecnologias, entre elas: Jav
 
 <img width="939" height="856" alt="image" src="https://github.com/user-attachments/assets/a507cbca-aa19-483b-9248-f6c94a08b3f9" />
 
-## Configuração application.properties:
+## Rodando o backend
 
-spring.datasource.url=jdbc:postgresql://localhost:XXXX/seu_banco_de_dados <br>
-spring.datasource.username=postgres<br>
-spring.datasource.password=sua_senha<br>
+O `application.properties` lê tudo de variáveis de ambiente, listadas em [application-example.properties](src/main/resources/application-example.properties) e no `.env.example` da raiz:
 
-spring.datasource.driver-class-name=org.postgresql.Driver<br>
+| Variável | Descrição |
+|---|---|
+| `DB_URL` | URL JDBC do PostgreSQL |
+| `DB_USERNAME` / `DB_PASSWORD` | credenciais do banco |
+| `JWT_SECRET` | segredo usado para assinar o token |
 
-spring.jpa.hibernate.ddl-auto=update<br>
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect<br>
+Com o banco no ar (`docker compose up -d`, na raiz), carregue o `.env` e execute a partir de `backend/`:
 
-api.security.token.secret=chave_secreta_jwt
+```bash
+set -a; . ../.env; set +a
+./mvnw spring-boot:run
+./mvnw verify
+```
+
+No PowerShell, defina as variáveis com `$env:DB_URL = "..."` antes de rodar. Na IDE, configure as mesmas variáveis na configuração de execução.
+
+O Flyway aplica as migrations de `src/main/resources/db/migration` ao subir.
